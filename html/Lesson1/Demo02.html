@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="xxx.php">
+        <!-- text:文本框 -->
+        <input type="text" value="请输入用户名"> <br>
+        <input type="password"> <br>
+        <!-- radio,单选按钮，可以实现多选 -->
+        <!-- name是表单元素的名字，radio具有相同的名字name才可以实现多选1 -->
+        性别：男<input type="radio" name="sexSelector">女<input type="radio" name="sexSelector"> <br>
+        <!-- 复选框，可以实现多选 -->
+        <input type="checkbox" name="hobby" value="吃饭">吃饭
+        <input type="checkbox" name="hobby" value="睡觉">睡觉
+        <input type="checkbox" name="hobby" value="打豆豆">打豆豆
+
+        <br>
+        <!-- 将信息提交给后台 -->
+        <input type="submit" value="提交">
+        <!-- 重置 -->
+        <input type="reset" value="重置">
+
+        <input type="button" value="按钮">
+
+        <input type="file">
+
+        <label for="sex">男</label>
+        <input type="radio"  id="sex">
+    </form>
+
+</body>
+
+</html>

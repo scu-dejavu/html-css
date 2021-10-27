@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        性别 <input type="radio" name="sexSelector" id="sexSelector1">男 <input type="radio" name="sexSelector" id="sexSelector2">女
+        <input type="reset" value="重置">
+    </form>
+
+    <button id="btn01">按钮</button>
+    <script>
+        const btn01 = document.getElementById("btn01")
+        const sexSelector = document.getElementsByName("sexSelector")
+        btn01.onclick = function(){
+            sexSelector[0].checked=""
+        }
+    </script>
+</body>
+</html>

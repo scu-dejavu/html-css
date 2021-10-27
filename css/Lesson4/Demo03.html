@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .damao {
+            width: 100px;
+            height: 100px;
+            float: left;
+            background-color: #5f4897;
+        }
+
+        .ermao {
+            width: 200px;
+            height: 200px;
+            background-color: greenyellow;
+            float: left;
+        }
+
+        .box {
+            width: 1000px;
+            background-color: grey;
+            border: 2px solid black;
+            /* 2给父元素添加overflow */
+            /* overflow: hidden; */
+        }
+
+        .box02 {
+            width: 1000px;
+            height: 200px;
+            background-color: black;
+        }
+
+        /* 1闭合标签法 */
+        .clear {
+            clear: both;
+        }
+
+        .clearfix:after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .clearfix {
+            /* IE6、7 专有 */
+            *zoom: 1;
+        }
+
+        .clearfix:before,
+        .clearfix:after {
+            content: "";
+            display: table;
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box clearfix">
+        <div class="damao">大猫</div>
+        <div class="ermao">二猫</div>
+
+        <!-- <br class="clear"></br> -->
+    </div>
+    <div class="box02">
+
+    </div>
+</body>
+
+</html>

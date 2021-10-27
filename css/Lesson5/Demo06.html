@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            margin: 0 auto;
+            width: 400px;
+            height: 1000px;
+            background-color: pink;
+        }
+
+        .dj {
+            position: fixed;
+            /* 走浏览器一半 */
+            left: 50%;
+            top: 0;
+            /* 走版心内容的一半，400/2 */
+            /* 设置成js实现 */
+            /* margin-left: 200px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <div class="dj">
+        <img src="./img/pvp.png">
+    </div>
+
+    <script>
+        const box1 = document.getElementsByClassName("dj")
+        box1[0].style.marginLeft = 200 + "px"
+    </script>
+</body>
+
+</html>

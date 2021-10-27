@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 规定动画 */
+        @keyframes move {
+            0%{
+                transform: translate(0,0);
+            }
+            25%{
+                transform: translate(200px,0);
+            }
+            50%{
+                transform: translate(200px,200px);
+            }
+            75%{
+                transform: translate(0,200px);
+            }
+            100%{
+                transform: translate(0,0);
+            }
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            /* 调用动画（必须的） */
+            animation-name: move;
+
+            /* 完成整个运动的时间（必须的） */
+            animation-duration: 4s;
+
+            /* 动画何时开始，延迟，默认为0 */
+            animation-delay: 0ms;
+
+            /* 运动曲线 */
+            animation-timing-function: ease;
+
+            /* 动画播放次数,infinite为一直循环 */
+            /* animation-iteration-count: infinite; */
+
+            /* 规定动画是否在下一周期逆放,默认是normal */
+            /* animation-direction: alternate; */
+
+            /* 规定动画是否正在运行或暂停，默认是running */
+            /* animation-play-state: paused; */
+
+            /* 规定动画结束后状态，保持forwards回到起始backwards */
+            animation-fill-mode:forwards;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

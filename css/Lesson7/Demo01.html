@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<title>CAS Login</title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/index.css">
+	<!--[if lt IE 9]>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<iframe id="loginIframe"></iframe>
+	<div id="default" class="container">
+		<div class="border col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+			<div class="system">CAS Login</div>
+			<form method="post" id="loginForm" action="login">
+				<div class="form-group">
+					<label>
+                    <span>Password</span>
+                    <input type="text" class="form-control" name="username"></label>
+				</div>
+				<div class="form-group">
+					<label>
+                    <span>Password</span>
+                    <input type="password" class="form-control" name="password"></label>
+				</div>
+				<div class="form-group" style="display: none;" id="captchaParent">
+					<label>
+                    <span style="display: none;" id="captchaLabel">Validation Code</span>
+                    <div id="captchaDiv"></div>
+                </label>
+				</div>
+				<div class="form-group">
+					<input class="btn btn-login" type="submit" name="submit" value="LOGIN"></div>
+
+					<div style="display: none;">
+						<input name="type" value="username_password"/><input name="execution" value="6c39f5ba-a288-4a81-9c26-9edf48c57ecf_ZXlKaGJHY2lPaUpJVXpVeE1pSjkuTU9CWjZjR2FYTDNPMkt6czBKUThnc3lCbndYa3FCMExwTUdvQU5aR0MySVVJQ1ZWNTlGcEFjekIxRlJSeFBucldlSkliRmZWUk5pSHk5T0FncHJYZ08rdHQwQUY4RmhlVENlRkorREhPTy9OL2NCNTlETXhmWElXcWFBdmxzaXhNc2h0QVJHZkFpdFg1bUlQV04wUHJvUUVvTGtLZ0xWbUk1WkFtZnFFOFBFTlVDNHlHVHFpTlNZYkwvMzdENUtDR3BnUFdSMm5NdmxWbm4wL2RWcFlNaVBRZ1podU00Y2dJTzlsOGx0dFdZWFVDblZvZnRVYTVxRlhRU2I1eUZ2c29VclJMaVlJYWgyVldzN0dHU292YVkvV0xIYWtVQUtmaFNKVXVWeThkeXY2cUVmbjJCeUNNY3hxVklDVGlTR2lQZWpCSFdkdktFT2JTT0U0MkRpWFhna0FXd01tNFRCOVFQbkVyb3RaMTQ0RWlTY211eVhOUGsxQi9rb0xrdTZjeWFLSjd4MitSNWhJOU9NdHdBcFVScWdjRVlxdXpMWUN1SUtQQ3VnVlhFb2VtMFQyQ1hBdHA4cEZnb1daTkV6TnFhT25pZE9sN3lNbHpHbm4vVUpjOVBuR0VIYy9EcUVHRmNOeiszRUhKcTFmN3hkSUdxOTdFV09JM2krQnpEMjU1RlRSSE14ZndlNmRCS0JRNk1aR2JYeHdNSFJwUWVKdHRURTF3WmE2Vm9nR0JVVEZHSHBBWVVzQWlvSnpNSnhIajNrbGZROWduSnR6bEcwRmp3cFJnOUN0V0lXMUM1RzhnQ25tT0lEL21HcDk0QjlNa2Q0M0xoUFA3VGFsOTJMVlBwQ054Vkg4SlNRNE45YXFGQTZtNWsyVkdHaXZkbDRxbU5Tc2w5aFJJQ1FRcjhiSElESXB6cjZ6MHMzT0Y4aVpFMjg3azdJRk4xSFd6bmFpSWlpcUZDMmdseWs2bmRkM21LeWNiWXcvM29VT0szZXZtMG1wd3hSNjhmeXYwZVg1MHVyZ2srcmsxMklSMnB4OWR6ZzVkakhLQ3R6ZEF1TFFYSTdRSW1WM2xESDJMbHBxWFpsQi9ZUHdyUm9yUlhSbXdxalR4OU02M2VFNHlwUnRTeXpabmIrV0Z6VlN0enYzY3VHZk9taHowdVpYNGtKbmN3Q1RWMnRHOGNXNWd6Q0hrcDZjOE0raVFOSXRUbXpJNjYwTlVZamtVZXRUV1hmb0p6UUR3eHlCRDRVaDhjSEdiT0NRODMvbDJUeXkyRlhtcnlNL1puWk9PTGlvWXpycXlROU9yK1E2UlBpQklXY1RNV1g2cEZWa016d2xURWJYOThsVFlUaVNYWGdjZktQS0FhNXlPQUNMbUY5TjdySHcxNjV1M0dFWW5xUVVJSVR3UTVBVzhqVStRZHBRbE9HdDRqLzVWMWdjL1ZhN3JJOFl4SERVV0tqemYrVmRyYXl2bjVVZzhXSlA2Rkx3bk10TTZvL3JkQ2duSEZUSnJINUxkR3hSS3FFVExTVndHajY5TzlHZzV3RWVmU001UDVzMDdCNklVUjRScFBrV3FkeThjc2lpZUpEemJ4Y2s5NzlOVTN4MmdWMDlrY3lhZVVkWlBUbzVZbUR0bXVMcEl6eGpTdTNpUUZYNmhSczZvRURGNko4QUVZWEtKeFhtRi8waDJDNVJlTFVZOFJBMEpYc2ZuR251aVYyMmxHWmtPeWM5V1ZHRDVRZFBjSzNjdmdieUpSMFd2aDN2V1hFUGx0c3VtelFnSlVBK3hXNUVpd2ZsTHF4eXFQcUYzcFJIeW91SkQwNENkT0pIMnd6Z2hROFJRQkY3R2ttZjg4cXZjc2VvaXVLSVltclUzOTFsTG9CUlZPdk4xR2Jwb2FVdk5VMGZVOWpnbUNhNzRSQjFBSDg3SjFrYWttS3FFZHNsYTBaamVJeklxU2o5N2ZINTBlZWRMTWNHK3czR05mdG9FR3c2QTZyQWx3PT0udGVxNUxDbTVMVmxzRGZFSi10cUNEcjJCZW9XUU50elRsVjczZC1MWjAwd3hBdkExd244eU5MTjhDdEFZS2xIdW14SXYtQnJjd1Q1WW5BU2RRTEdWbFE="/><input name="_eventId" value="submit"/></div>
+			</form>
+			<div class="hint">Please use the latest version of Chrome for best experience.</div>
+		</div>
+	</div>
+	<div id="language" style="display: none">en</div>
+	<div id="pac4jUrls" style="display: none">
+		<a href="clientredirect?client_name=mc-qr">mc-qr</a><a href="clientredirect?client_name=mc-wx">mc-wx</a>
+	</div>
+	<script type="text/javascript">
+		function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+var config = {};
+// 当前语言
+config.locale = $("#language").text();
+// 错误信息
+config.error = $("#errorDiv p").text() || null;
+// 登录目标系统
+var targetServiceName = $("#targetSystem").text() || null;
+if (targetServiceName) {
+    config.service = {
+        name: targetServiceName,
+        href: getParameterByName('service') || getParameterByName('target') || getParameterByName('TARGET')
+    };
+}
+// 第三方授权登录链接
+var pac4jAs = $("#pac4jUrls a");
+if (pac4jAs.size() > 0) {
+    config.pac4j = [];
+    pac4jAs.each(function(i) {
+        config.pac4j.push({
+            href: pac4jAs[i].href,
+            name: pac4jAs[i].innerText
+        });
+    });
+}
+
+function getPageConfig() {
+    return config;
+}
+
+function doLogin(username, password, type, captcha) {
+    var lginfm = document.getElementById('loginForm');
+    $("#loginForm input[name='username']").val(username);
+    $("#loginForm input[name='password']").val(password);
+    $("#loginForm input[name='type']").val(type);
+    if (captcha) {
+        $("#loginForm input[name='captcha']").val(captcha);
+    }
+    $("#loginForm input[name='submit']").click();
+}
+
+function setLanguage(locale) {
+    var fullURL = window.location.href;
+    if (fullURL.indexOf('locale=zh_cn') !== -1) {
+        window.open(fullURL.replace('locale=zh_cn', 'locale=' + locale), '_self');
+        return;
+    }
+    if (fullURL.indexOf('locale=en') !== -1) {
+        window.open(fullURL.replace('locale=en', 'locale=' + locale), '_self');
+        return;
+    }
+    var baseURL = fullURL.split('?')[0];
+    var params = window.location.search.substring(1);
+    if (params.length > 0) params = '&' + params;
+    window.open(baseURL + '?locale=' + locale + params, '_self');
+}
+
+function ie8() {
+    return navigator.appName === "Microsoft Internet Explorer"
+        && parseInt(navigator.appVersion.split(";")[1].replace(/[ ]/g, "").replace("MSIE", "")) <= 8;
+}
+	</script>
+	<script>
+		// 验证码
+$("#captchaParent").show();
+$("#captchaLabel").show();
+config.captcha = {
+    type: 'image',
+    id: '9355697892'
+};
+var captchaId = 'captcha?captchaId=' + config.captcha.id;
+var captchaDiv = $("#captchaDiv");
+captchaDiv.append('<input type="text" class="form-control captcha-input" name="captcha">');
+captchaDiv.append('<img class="captcha-img" src="' + captchaId + '" onclick="this.src=this.src+\'#\'"/>');
+	</script>
+	<script type="text/javascript">
+		// 手机验证码登录
+config.tokenLogin = {
+    enabled: true
+};
+	</script>
+	<script type="text/javascript">
+		config.mobileCampus = {
+    baseHost: 'wfw.scu.edu.cn',
+    security: true,
+    baseUrl: 'https://wfw.scu.edu.cn',
+    appid: '200200416213558280',
+    title: '移动校园',
+    autoRedirect: false
+};
+	</script>
+	<script type="text/javascript" src="/cas/js/init.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    flex-direction:column;
+    pointer-events: all;
+}
+
+
+div div{
+    width: 100px;
+    height: 100px;
+    background-color: greenyellow;
+}
+button{
+    width: 100px;
+    height: 20px;
+    margin: 20px;
+    
+}
